@@ -66,8 +66,10 @@ class App extends Component {
       recipes: [...this.state.recipes, newRecipe],
       newRecipeName: '',
       newRecipeIngredients:''
+    }, function() {
+      localStorage.setItem('recipes', JSON.stringify(this.state.recipes));
     });
-
+    
     this.toggleRecipeModal();
   }
 
@@ -84,6 +86,7 @@ class App extends Component {
     this.setState({
       recipe: newState
     });
+    localStorage.setItem('recipes', JSON.stringify(this.state.recipes));
     this.toggleEditRecipeModal();
   }
 
@@ -95,7 +98,7 @@ class App extends Component {
       recipe: newState
     });
     }
-    
+    localStorage.setItem('recipes', JSON.stringify(this.state.recipes));
   }
 
   render() {
